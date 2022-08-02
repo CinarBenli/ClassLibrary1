@@ -1,4 +1,4 @@
-﻿using Rocket.Core.Plugins;
+using Rocket.Core.Plugins;
 using Rocket.Unturned.Events;
 using Rocket.Unturned.Player;
 using SDG.Unturned;
@@ -18,7 +18,15 @@ namespace ClassLibrary1
             PlayerEquipment.OnUseableChanged_Global += (equipment) => onUsebleChanged(equipment);
             ChangeFiremode.OnFiremodeChanged += onFiremodeChanged;
             UseableGun.onChangeMagazineRequested += changeMagazine;
+            UseableGun.onBulletSpawned += onFireGun;
 
+
+        }
+
+        private void onFireGun(UseableGun gun, BulletInfo bullet)
+        {
+            UnturnedPlayer pl = UnturnedPlayer.FromPlayer(gun.player);
+            
         }
 
         private void changeMagazine(PlayerEquipment equipment, UseableGun gun, Item oldItem, ItemJar newItem, ref bool shouldAllow)
